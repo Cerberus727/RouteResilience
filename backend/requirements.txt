@@ -1,0 +1,9 @@
+# Core runtime: map workspace, routing, simulation, reports, artifact browsing
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29
+pydantic>=2.6,<3
+networkx>=3.2
+numpy>=1.24
+scipy>=1.10
+pillow>=10.0
+osmium>=4.0          # PBF parsing for the road index (pyosmium)

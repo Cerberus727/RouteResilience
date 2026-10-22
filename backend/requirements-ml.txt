@@ -1,0 +1,7 @@
+# Segmentation Lab: DeepLabV3+ inference, checkpoint inspection, CPU latency.
+# CPU wheels (Windows/Linux):
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements-ml.txt
+torch>=2.1
+torchvision>=0.16
+segmentation-models-pytorch>=0.3

@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --grid: #243248;
+  --axis-text: #8b9ab0;
+}
+
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-ink-950 font-sans text-[13px] text-slate-200 antialiased;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+  }
+  ::selection { @apply bg-cyan-500/30; }
+  :focus-visible { @apply outline-none ring-2 ring-cyan-400/60 ring-offset-0; }
+}
+
+@layer components {
+  .glass {
+    @apply rounded-xl border border-white/[0.07] bg-ink-900/[0.92] shadow-[0_8px_30px_rgba(0,0,0,0.45)] backdrop-blur-md;
+  }
+  .panel {
+    @apply rounded-lg border border-white/[0.06] bg-ink-850;
+  }
+  .section-title {
+    @apply text-[11px] font-semibold uppercase tracking-[0.09em] text-slate-400;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-md border border-white/[0.09] bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-slate-200
+      transition-colors hover:border-white/20 hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply border-cyan-400/40 bg-cyan-500/15 text-cyan-50 hover:border-cyan-300/70 hover:bg-cyan-500/25;
+  }
+  .btn-danger {
+    @apply border-red-400/40 bg-red-500/15 text-red-50 hover:border-red-300/70 hover:bg-red-500/25;
+  }
+  .btn-success {
+    @apply border-emerald-400/40 bg-emerald-500/15 text-emerald-50 hover:border-emerald-300/70 hover:bg-emerald-500/25;
+  }
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-300 transition-colors hover:bg-white/10 hover:text-white
+      disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .input {
+    @apply rounded-md border border-white/[0.09] bg-ink-950/70 px-2.5 py-1.5 text-xs text-slate-100 placeholder:text-slate-500
+      focus:border-cyan-400/70 focus:outline-none focus:ring-1 focus:ring-cyan-400/40;
+  }
+  .table-dense { @apply w-full border-collapse text-xs; }
+  .table-dense th {
+    @apply sticky top-0 z-10 border-b border-white/[0.07] bg-ink-900 px-2.5 py-1.5 text-left text-[10.5px] font-semibold uppercase tracking-wider text-slate-400;
+  }
+  .table-dense td { @apply border-b border-white/[0.05] px-2.5 py-1.5 tabular-nums text-slate-300; }
+  .table-dense tbody tr:hover td { @apply bg-white/[0.03]; }
+  .kv { @apply grid grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-1.5 text-xs; }
+  .kv dt { @apply text-slate-400; }
+  .kv dd { @apply text-right font-medium tabular-nums text-slate-100; }
+}
+
+/* MapLibre chrome */
+.maplibregl-ctrl-attrib { background: rgba(10, 15, 26, 0.75) !important; color: #94a3b8 !important; font-size: 10px; }
+.maplibregl-ctrl-attrib a { color: #cbd5e1 !important; }
+.maplibregl-ctrl-attrib-button { filter: invert(0.85); }
+.rr-marker {
+  display: grid; place-items: center; width: 24px; height: 24px; border-radius: 9999px;
+  font: 700 11px/1 Inter, system-ui, sans-serif; color: #04121a; border: 2px solid #0b111c;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18), 0 6px 16px rgba(0, 0, 0, 0.55);
+}
+.rr-marker-origin { background: #f1f5f9; }
+.rr-marker-destination { background: #22c55e; }
+
+.checker {
+  background-image: linear-gradient(45deg, #0e1522 25%, transparent 25%), linear-gradient(-45deg, #0e1522 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #0e1522 75%), linear-gradient(-45deg, transparent 75%, #0e1522 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+
+@keyframes rr-pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
+.animate-soft-pulse { animation: rr-pulse 1.6s ease-in-out infinite; }
